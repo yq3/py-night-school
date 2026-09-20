@@ -5,5 +5,7 @@ __pycache__/
 .ruff_cache/
 # 模型端点配置（只有 .env.example 进仓）
 .env
-# ZCode 会话工作状态（计划书等本地产物；若日后保存需随仓的工作流，用 !.zcode/workflows/ 反选）
+# ZCode 会话工作状态（计划书等本地产物；git 不下钻目录级排除的目录，日后若要放行 workflows 需改写为 .zcode/* + !.zcode/workflows/）
 .zcode/
+# playwright-cli 技能的快照/日志工作区（视觉验证本地产物）
+.playwright-cli/

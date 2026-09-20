@@ -1,0 +1,15 @@
+{#-
+  Override of material 9.7.7 partials/source.html（升级 material 时需重新 diff 本文件）：
+  与原版唯一差异 = 删去 data-md-component="source"。bundle JS 据此属性初始化 source 组件，
+  运行时向 api.github.com 拉 releases/users 数据——本仓无 releases 永远 404，取回的数据又被
+  night.css 藏起从不展示，纯浪费外联（违反零外链纪律）。静态锚点不挂组件即不发请求。
+-#}
+<a href="{{ config.repo_url }}" title="{{ lang.t('source') }}" class="md-source">
+  <div class="md-source__icon md-icon">
+    {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
+    {% include ".icons/" ~ icon ~ ".svg" %}
+  </div>
+  <div class="md-source__repository">
+    {{ config.repo_name }}
+  </div>
+</a>

@@ -237,6 +237,7 @@ def write_mkdocs_yml(nav: str) -> None:
 site_name: Python Night School
 site_description: 写给 Java 工程师的 Python Agent 开发晚课
 site_url: {SITE_URL}
+repo_url: https://github.com/yq3/py-night-school  # 页头 GitHub 图标按钮（Material 原生 repo 链接，header override 自带渲染分支）
 copyright: Python Night School · Python 夜校 · 以 Java 心智模型为桥
 docs_dir: .stage/docs
 site_dir: dist
@@ -247,6 +248,8 @@ theme:
   custom_dir: .stage/overrides   # 覆盖 header.html：去 logo、站名可点击回首页
   language: zh
   font: false                    # 宪法：不外链 CDN，字体走系统栈（night.css 定义）
+  icon:
+    repo: fontawesome/brands/github  # 页头仓库按钮用 GitHub 章鱼猫（material 默认 git-alt 菱形标）
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default

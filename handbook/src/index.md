@@ -11,7 +11,7 @@ hide:
 <h1 class="ns-title">Python Night School</h1>
 <p class="ns-sub">Python 夜校——写给 Java 工程师的 Python Agent 开发晚课：以 agent 开发为场景学 Python，以 Java 心智模型为桥，一个学期从语言核心学到金融合规毕业设计。</p>
 <p class="ns-meta">6 学段 · 30 讲 · 练习即测试 · 金融合规毕业设计</p>
-<p class="ns-cta"><a class="ns-btn ns-btn--primary" href="unit0/">从 Unit 0 开始</a><a class="ns-btn" href="curriculum/">先看课表</a></p>
+<p class="ns-cta"><a class="ns-btn ns-btn--primary" href="unit0/">从 Unit 0 开始</a><a class="ns-btn" href="curriculum/">先看课表</a><a class="ns-btn" href="https://github.com/yq3/py-night-school">获取仓库</a></p>
 </div>
 
 ## 这门课的六个不一样
@@ -95,6 +95,20 @@ hide:
 
 ## 练习在哪里
 
-阅读站只负责「读」。练习在仓库里：每课目录是独立 uv 项目，`uv sync` 后 `uv run pytest` 全绿即毕业——三命令验收、hints 渐进、参考答案分离，这些机制都以文件形态躺在课时目录里，克隆即学。
+阅读站只负责「读」。这门课真正的主战场在仓库源码里——练习、提示、验收、参考答案都是以文件形态躺在课时目录中的机制，网页只能展示、带不走：
 
-> 全部 6 学段 44 页已上线；课程内容以仓库 `units/` 的 Markdown 为唯一事实源，改源文件后重跑构建即可。右上角的月亮 / 太阳可切换夜间 / 日间模式。
+- **练习文件**：每课 `exercises/` 是带 TODO 的骨架，你来填空；
+- **hints 三级渐进**：卡住时逐级展开提示，第 3 级才接近答案——纸面平铺会泄底，所以必须进文件；
+- **自动验收**：每课是独立 uv 项目，`uv sync` 后 `uv run pytest` 全绿即本课毕业，不用等人对答案；
+- **参考答案分离**：`solution/` 目录供对答案与复盘，验收测试文件头部注明不要改。
+
+```bash
+git clone https://github.com/yq3/py-night-school.git
+cd py-night-school/units/unit0-toolchain/L0.1-uv-toolchain
+uv sync
+uv run pytest
+```
+
+克隆后跑通 L0.1 的验收，就算正式入学——之后的每一课都是这套节奏。
+
+> 全部 6 学段 44 页已上线；课程内容以仓库 `units/` 的 Markdown 为唯一事实源，改源文件后重跑构建即可。右上角的月亮 / 太阳可切换夜间 / 日间模式，GitHub 图标直达仓库。

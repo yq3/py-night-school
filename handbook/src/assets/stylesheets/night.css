@@ -126,6 +126,39 @@ html {
 .md-header__option .md-icon {
   color: var(--ns-ink-2);
 }
+/* 页头 GitHub 仓库按钮（repo_url 激活，Material 原生 .md-source）：只留图标——
+   隐去主题自带的仓库名文字，颜色与月亮/太阳切换器同套（浅纸墨灰 / 夜色星墨）。
+   Material 给 .md-header__source 钉死 11.7rem 宽（为容纳仓库名 + 星数），图标态
+   必须收窄，否则右侧挂 200px+ 隐形点击死区 */
+.md-header__source {
+  order: 2;   /* 紧跟主题切换器之后（Material 默认 DOM 序：切换器 → 搜索框 → 仓库，flex order 调换后两者） */
+  width: auto;
+  max-width: none;  /* Material 同规则里还钉了 max-width: 11.7rem，一并重置 */
+}
+[dir] .md-header__source {
+  margin-left: 0;  /* Material 是 [dir=ltr] 前缀 0-2-0 给 1.4rem 边距——单类压不过，同形 [dir] 前缀后发归零（踩坑 #23 打法） */
+}
+.md-header__inner .md-search {
+  order: 3;
+}
+.md-header__source .md-source {
+  color: var(--ns-ink-2);
+  padding: 0 0.2rem;  /* Material 的 .md-source 无 padding；这是新增的 4px 呼吸边距（悬停区不满贴图标） */
+}
+.md-header__source .md-source:hover {
+  color: var(--ns-python);
+}
+.md-header__source .md-source__icon {
+  width: auto;  /* Material 钉死 width: 2rem（height 2.4rem，svg 居中内空 8px×2）——宽度重置贴 svg */
+}
+[dir] .md-header__source .md-source__icon svg {
+  margin-left: 0;   /* Material 是 [dir=ltr] 前缀给 svg .6rem（12px）左边距——图标+仓库名旧布局的间隙，清零 */
+  margin-right: 0;
+}
+.md-header__source .md-source__repository,
+.md-header__source .md-source__facts {
+  display: none;
+}
 /* 顶栏搜索框：Material 桌面端是 26% 黑的灰胶囊，素纸下扎眼——静置与背景同色，
    悬停用站点统一的 hover 浅纸色提供一点反馈 */
 .md-header .md-search__form {
