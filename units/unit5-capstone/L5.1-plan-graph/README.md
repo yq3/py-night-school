@@ -11,7 +11,7 @@
 **真的组装**。Unit 5 的四课 + 里程碑会共同长成一个可运行的财务 agent PoC——技术栈
 langgraph（已学）+ FastAPI/SQLite（后续课）+ 任一 OpenAI 兼容模型；本课零 key 离线。
 今晚你把 research 报告推荐架构的**编排层**落成自己的图（蓝本：
-[../../../../research/agent-oss/report.md](../../../../research/agent-oss/report.md) §4.2）：
+[research/agent-oss/report.md](https://github.com/yq3/lab/blob/main/research/agent-oss/report.md) §4.2）：
 
 - 装一张**静态拓扑**的图：`intake → planner → plan_gate → executor → drafter → submit`
   固定不变，外加一条带计数封顶的重规划环与一个超限收尾哨兵（escalate）；
@@ -66,7 +66,7 @@ human 节点回环；本课用到其中两个：**计划驱动路由**（planner
 Java 蓝本就是 DataAgent 的 `PlanExecutorNode`（DataAgent：Java + spring-ai-alibaba graph
 的开源数据分析 agent，本教程调研的 18 仓之一——Java 栈里与毕业设计形态最接近的样本；
 档案见
-[../../../../research/agent-oss/profiles/DataAgent.md](../../../../research/agent-oss/profiles/DataAgent.md)
+[research/agent-oss/profiles/DataAgent.md](https://github.com/yq3/lab/blob/main/research/agent-oss/profiles/DataAgent.md)
 §2.2）：图拓扑静态声明，LLM 规划产物（Plan JSON）作为状态变量驱动确定性 dispatcher——
 Spring AI Alibaba 把同一模式做成了 Java 原生件，今晚我们用 langgraph 手装一遍它的 Python 版。
 
@@ -368,10 +368,10 @@ uv run python -c "from hints import hint; print(hint('ex1', 1))"
     不在 function calling 协议里），对照着读更能看清两种「让模型选工具」的差别；
   - `langchain-ai/langgraph@e539ac122#libs/langgraph/langgraph/pregel/main.py` ——
     Pregel 执行循环：superstep 调度本体——demo_trace 的逐 superstep 轨迹就是它的可视化。
-- 研究蓝本（lab 仓内，写作输入）：推荐架构与 A23/A29/A15 模式出处
-  [../../../../research/agent-oss/report.md](../../../../research/agent-oss/report.md) §2.1/§4.2；
+- 研究蓝本（见 yq3/lab 调研档案，写作输入）：推荐架构与 A23/A29/A15 模式出处
+  [research/agent-oss/report.md](https://github.com/yq3/lab/blob/main/research/agent-oss/report.md) §2.1/§4.2；
   Java 原生先例（PlanExecutorNode 的白名单校验、步进游标、修复回环）
-  [../../../../research/agent-oss/profiles/DataAgent.md](../../../../research/agent-oss/profiles/DataAgent.md) §2.2/§2.4。
+  [research/agent-oss/profiles/DataAgent.md](https://github.com/yq3/lab/blob/main/research/agent-oss/profiles/DataAgent.md) §2.2/§2.4。
 
 ## 离毕业又近的一块
 

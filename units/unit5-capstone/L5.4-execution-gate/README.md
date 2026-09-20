@@ -416,9 +416,9 @@ uv run python -c "from hints import hint; print(hint('ex1', 1))"
     恢复原式在
     `alibaba/spring-ai-alibaba@f82da0b50#spring-ai-alibaba-graph-core/src/test/java/com/alibaba/cloud/ai/graph/InterruptionTest.java`
     ——`workflow.stream(null, RunnableConfig.builder().resume().build())`。
-- 研究蓝本（lab 仓内，写作输入）：A7 执行侧二次校验 / A8 fail-closed 决策门三态 / A9
+- 研究蓝本（见 yq3/lab 调研档案，写作输入）：A7 执行侧二次校验 / A8 fail-closed 决策门三态 / A9
   授权不可达的模式条目见
-  [../../../../research/agent-oss/report.md](../../../../research/agent-oss/report.md)
+  [research/agent-oss/report.md](https://github.com/yq3/lab/blob/main/research/agent-oss/report.md)
   §2.1 表 A7–A9；§4.3 审批与风控五层（本课=第⑤层的收口）；§4.6 分期落地（本课=第二期
   「受控执行」的核心件）。
 - **结业自查表**（CURRICULUM §7 原文收录——逐条对照，全勾即毕业）：

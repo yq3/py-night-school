@@ -9,7 +9,7 @@
 
 L3.3 那晚你在命令行里手动 `Command(resume="approve")` 救活一张暂停的图；今晚这套机制
 **变成产品面**：图照旧在 submit 处 `interrupt()` 暂停，但等人的不再是你手敲的恢复命令，
-而是一个正经的审批 API 组（蓝本 [../../../../research/agent-oss/report.md](../../../../research/agent-oss/report.md)
+而是一个正经的审批 API 组（蓝本 [research/agent-oss/report.md](https://github.com/yq3/lab/blob/main/research/agent-oss/report.md)
 §2.1 A1/A2/A6，产品先例 opencode——开源编码 agent（TS），「server 即产品、TUI 只是
 client」的 service 化形态即出自它）。完成后你能：
 
@@ -387,11 +387,11 @@ uv run python -c "from hints import hint; print(hint('ex1', 1))"
     审批外化 API 组的产品原型（opencode 的 permission 端点协议）：POST 建请求 /
     GET 待审总表 / reply / saved 授权 CRUD，配 SSE 事件推送——本课四个端点的语义
     蓝本（A1 出处；Effect 是 opencode 所用的 TS 框架，其 HttpApi 自动进 OpenAPI）。
-- 研究蓝本（lab 仓内，写作输入）：审批外化 API 组与三条纪律的出处
-  [../../../../research/agent-oss/report.md](../../../../research/agent-oss/report.md)
+- 研究蓝本（见 yq3/lab 调研档案，写作输入）：审批外化 API 组与三条纪律的出处
+  [research/agent-oss/report.md](https://github.com/yq3/lab/blob/main/research/agent-oss/report.md)
   §2.1 表 A1（reply 三元 + reject 回喂纠错）/ A2（审批是可重放事件）/ A6（批准并记住
   =可审计规则修订 + 内容 hash 绑定）；端点语义细读见
-  [../../../../research/agent-oss/profiles/opencode.md](../../../../research/agent-oss/profiles/opencode.md) §5.3。
+  [research/agent-oss/profiles/opencode.md](https://github.com/yq3/lab/blob/main/research/agent-oss/profiles/opencode.md) §5.3。
 
 ## 离毕业又近的一块
 

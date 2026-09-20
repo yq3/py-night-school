@@ -1,14 +1,14 @@
 # AGENTS.md — py-night-school 工作规范
 
 > 本文档是教程项目的「宪法」：中心思想、课程设计理念与硬性纪律。**写课 / 改课 / 审课前必读**。
-> 课表与课时明细见 [CURRICULUM.md](./CURRICULUM.md)；对外叙事见 [README.md](./README.md)；设计理念的方法论证据链见 lab 仓 [research/agent-tutorials/](../research/agent-tutorials/)（landscape + report + profiles ×8）。
+> 课表与课时明细见 [CURRICULUM.md](./CURRICULUM.md)；对外叙事见 [README.md](./README.md)；设计理念的方法论证据链见 lab 仓 [research/agent-tutorials/](https://github.com/yq3/lab/tree/main/research/agent-tutorials/)（landscape + report + profiles ×8）。
 
 ## 1. 中心思想
 
 - **一句话**：写给 Java 工程师的 Python Agent 开发晚课——以 agent 开发为场景学 Python，以 Java 心智模型为桥。
 - **双目的**：学员既获得 Python 工程能力，也获得可带回 Java 栈的迁移地图（毕业设计产出 JAVA-MAPPING.md）。
 - **受众红线**：只服务「Java 熟、Python 略懂」人群。Python 已熟练者、零基础者、想学 LLM 原理者——在 README「招生对象」明确指路别处，不为他们加课。
-- **空档定位**（不摇摆）：市场上无人占据的交集 = Java 桥 × 练习自动验收 × 源码深度 × 金融毕业设计 × 端点中立。证据：research/agent-tutorials/report.md（八仓解剖：练习验收是全行业空白）。
+- **空档定位**（不摇摆）：市场上无人占据的交集 = Java 桥 × 练习自动验收 × 源码深度 × 金融毕业设计 × 端点中立。证据：lab 仓 research/agent-tutorials/report.md（八仓解剖：练习验收是全行业空白）。
 
 ## 2. 课程设计理念（六特色，README 为准，此处为索引）
 
@@ -97,7 +97,7 @@ data/ 共享素材、覆盖 solution、跑全部命令；先例：L2.x 全课用
 |---|---|
 | [README.md](./README.md) | 对外入口：为什么 / 特色 / 课表 / 入学指南 / 路线图 |
 | [CURRICULUM.md](./CURRICULUM.md) | 30 课时大纲 + 课时模板 + 练习机制 + 布局与纪律 |
-| [research/agent-tutorials/](../research/agent-tutorials/) | 设计依据（创作输入，非发布物；landscape 元数据级 + report 教学机制级 + profiles ×8） |
+| [research/agent-tutorials/](https://github.com/yq3/lab/tree/main/research/agent-tutorials/)（lab 仓） | 设计依据（创作输入，非发布物，未随仓发布；landscape 元数据级 + report 教学机制级 + profiles ×8） |
 | `units/unit0-toolchain/L0.1-uv-toolchain/` | 六段式打样板（结构基准，以它为准复制） |
 
 演进关键决策（变更前先读）：个人学习计划 → 教程化；命名 `java2agent` →（歧义）→ `py-night-school`（机构隐喻可开新课、品牌伞）；Unit 1 补异常处理课（review 缺口）；「单元 = 学期」改「学段」；Unit 2 全单元交付 + 两轮复盘（对照组教学法落地：离线 mock 端点 + 剧本模型使零 key 可验收；锚定 mcp SDK 2.x——FastMCP 已改名 MCPServer，网上教程多为 1.x；2026 版 ruff 会 format Markdown 代码块，每课 pyproject `extend-exclude = ["*.md"]`）；**在线阅读站提前落地**（§7 远期项 → handbook/ 原型：units/ 的 MD 仍是唯一事实源与机器校验对象、站点是纯构建产物不手写、转换只作用于 .stage 副本且 fence 外、落地页渐进披露/对照表着色/灯卡先在站内演示、课程 MD 逐课采用前先在 §3/§4 补组件语法约定；过程志与踩坑实录沉淀 handbook/README.md）。拆仓原则：教程在 lab 仓内保持自包含，research 档案不随仓发布。
@@ -110,8 +110,10 @@ Unit 4/5 关键决策（先例与锚点）：①**外部产品课型定式「机
 
 新手友好度 + PyCharm + 双端命令 + 生态概念专项评审修复轮（2026-09-19，档案 [reviews/2026-09-19-novice-friendly-pycharm-review.md](./reviews/2026-09-19-novice-friendly-pycharm-review.md)，四审核点：单句级新手卡点 / IDE 触点 / Windows-macOS 双端 / 生态基础概念）：**IDE 侧栏定式**入 CURRICULUM §6 平台中立（blockquote `> **IDE 侧…**`、不入 bash 块、不作验收判据）——36 处插入 + L0.1 Step 7 扩容为双 checklist + 终端↔IDE 全量对照表（PyCharm 2025.1+ 原生 uv 为事实基线，Pro-only 能力标注）；**生态概念 101** 落 L0.1（虚拟环境/.venv、activate 为何从不需要、`uv run` 机制、pip↔uv 身世、ruff/Astral 身份、.python-version、wheel、[tool.*] 段）；**双端命令三缝隙先例**：仓库根脚本 `python3`→`uv run python`（unit5 里程碑重验五连）、`~` 家目录参数 Windows 不展开（unit3 README 克隆约定 + count_loc.py `expanduser()` 兜底）、加餐 export 补 PowerShell 对照块（L4.1）；P1 修复 L3.4 Step 3 补 clone+checkout。验证口径：check_lesson 30 课全 PASS + 改码三课（L3.4/L4.1/L4.3）three_state 全过 + handbook 44 页重建。
 
+拆仓独立开源（2026-09-19，先例与锚点，收尾见 issue #1）：自 lab 仓 `git subtree split` 拆出独立仓库（26 条历史 + MIT LICENSE）——**research 调研档案不随仓发布**，正文与元信息文档的相对死链（18 处，gh api 逐文件验证过存在）改锚 lab main 绝对 URL（`github.com/yq3/lab/blob/main/...`；锚 main 不锚 develop——develop 会漂移，main 走 PR 合并制不重写历史）；handbook 构建管线同步扩展：`rewrite_links` 对 lab 调研档案链接同样解包为纯文字——「research 不进站」的既有设计决定不因改绝对 URL 而破（效果分层：GitHub 讲义可点、站内保持纯文字）。
+
 ## 9. 本机环境与提交约定备忘（作者侧事实与约定，与课程内容无关；2026-09-20 自 lab 仓 AGENTS.md 迁入并按当日实测修正）
 
 - **除非用户明确要求，否则开发完成后不要提交到 GitHub**（不要 commit / push）。
 - **Git 推送必须走 SSH**：remote 已配 `git@github.com:yq3/py-night-school.git`；本机 keychain 无 GitHub HTTPS 凭据，HTTPS push 会认证失败，勿改回 HTTPS。推送报错先 `ssh -T git@github.com` 排查（首次可能需 `ssh-add ~/.ssh/id_ed25519`）。
-- **GitHub 访问备选序**：查仓库 / README / 文件内容优先 `gh api`（本机 gh 2.97.0 已登录 `yq3`，凭据在 keyring，当前工具环境 PATH 可直接用；§8 锚点复核即此法，如 `gh api repos/{owner}/{repo}/contents/{path}?ref=<commit>`）。github.com 网页与 raw.githubusercontent.com **间歇性超时**（lab 仓经验；2026-09-20 复测两者均 0.7s 可达——超时是波动不是永久墙），webfetch / curl 卡住时换 `gh api` 或 `git clone --depth 1 git@github.com:{owner}/{repo}` 到临时目录细读，不死磕重试。
+- **GitHub 访问备选序**：查仓库 / README / 文件内容优先 `gh api`（本机 gh 2.97.0 已登录 `yq3`，凭据在 keyring；实际安装于 `$HOME/install/gh_2.97.0_macOS_arm64/bin/gh`，**不在默认 shell PATH**——当前工具环境已注入可直接用，裸 shell 报 command not found 时用全路径；§8 锚点复核即此法，如 `gh api repos/{owner}/{repo}/contents/{path}?ref=<commit>`）。网络约束：`api.github.com` 稳定通畅，`github.com` 网页与 raw.githubusercontent.com **间歇性超时**（lab 仓经验；2026-09-20 复测两者均 0.7s 可达——超时是波动不是永久墙）——**锚点复核一律走 `gh api`**，webfetch / curl 卡住时换 `gh api` 或 `git clone --depth 1 git@github.com:{owner}/{repo}` 到临时目录细读，不死磕重试。

@@ -397,9 +397,9 @@ uv run python -c "from hints import hint; print(hint('ex1', 1))"
   - `langchain-ai/langgraph@e539ac122#libs/langgraph/langgraph/pregel/main.py` ——
     Pregel 执行循环（L5.1 复引）：superstep 调度本体——本课事件序（seq）与 superstep
     的一一对应，调度器源码是最终解释。
-- 研究蓝本（lab 仓内，写作输入）：A11 事件溯源会话存储 / A13 缓存即审计 / A15 审计绑定
+- 研究蓝本（见 yq3/lab 调研档案，写作输入）：A11 事件溯源会话存储 / A13 缓存即审计 / A15 审计绑定
   版式的模式条目与迁移要点见
-  [../../../../research/agent-oss/report.md](../../../../research/agent-oss/report.md)
+  [research/agent-oss/report.md](https://github.com/yq3/lab/blob/main/research/agent-oss/report.md)
   §2.1；§4.5 审计基线 12 条 checklist——本课落地其中 ①（append-only 事件流）、
   ④（LLM 决策缓存即审计）、⑥（规则与拓扑版本进审计键），其余条目是 L5.4 与里程碑的工位。
 

@@ -11,7 +11,8 @@ units/ 下的课程 Markdown 是唯一事实源（check_lesson.py 仍以它为�
   3. 结尾段「离毕业又近的一块」→ 包进灯卡容器；
   4. 表头命中「你熟悉的 X 物 / 今天的 Y 物」定式（或 Java/Python 关键词）的表
      → 包进 jp-table 并标注列位（X 侧橙、Y 侧蓝，Unit 3+ 框架对照表同样适用）；
-  5. 相对链接 `.../README.md` → 目录链接；指向仓外（../research 等）的链接解包为纯文字。
+  5. 相对链接 `.../README.md` → 目录链接；指向仓外（../research，及拆仓后改锚的
+     github.com/yq3/lab 调研档案绝对 URL）的链接解包为纯文字（research 不进站）。
 
 用法：
     uv sync                        # 首次
@@ -160,6 +161,10 @@ def wrap_jp_tables(text: str) -> str:
 def rewrite_links(text: str) -> str:
     def repl(m: re.Match[str]) -> str:
         label, target = m.group(1), m.group(2)
+        if target.startswith("https://github.com/yq3/lab/"):
+            # lab 调研档案链接（拆仓后由 ../research 死链改锚绝对 URL）不进站：
+            # 解链接保文字——须判在 https 直通之前，否则原样进站推翻「research 不进站」
+            return label
         if target.startswith(("http://", "https://", "#", "mailto:")):
             return m.group(0)
         if target.startswith("../"):

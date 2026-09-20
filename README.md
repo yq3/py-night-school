@@ -33,7 +33,7 @@
 5. **双贯穿线 + 金融毕业设计**：明线「报销单审查」从第一课种下、四大框架同题重做；暗线财务 agent 毕业设计每课长一块（审批外化 / 事件溯源 / fail-closed 执行门），结业另产出 Python↔Java 架构映射表。
 6. **夜校工程纪律**：中文原创、模型端点中立（任一 OpenAI 兼容 API）、每课独立 uv 项目锁定依赖、图片本地化、克隆即学——竞品的系统性短板（版本漂移、外链失效、绑定云厂）在这里默认不发生。
 
-> 特色 2–6 的方法论出处与证据见 [research/agent-tutorials/report.md](../research/agent-tutorials/report.md)（八仓教学解剖综合报告）。
+> 特色 2–6 的方法论出处与证据见 lab 仓 [research/agent-tutorials/report.md](https://github.com/yq3/lab/blob/main/research/agent-tutorials/report.md)（八仓教学解剖综合报告）。
 
 ## 课表
 
@@ -57,7 +57,7 @@
 
 ## 与现有教程的关系（我们不重复造轮子）
 
-本教程立足差异化，通用内容直接指路现有的优秀资源（完整分析见 lab 仓 [research/agent-tutorials/](../research/agent-tutorials/)）：
+本教程立足差异化，通用内容直接指路现有的优秀资源（完整分析见 lab 仓 [research/agent-tutorials/](https://github.com/yq3/lab/tree/main/research/agent-tutorials/)）：
 
 - LLM / 智能体基础理论 → [hello-agents](https://github.com/datawhalechina/hello-agents)（Datawhale，中文，16 章大部头）
 - MCP 协议深入 → [microsoft/mcp-for-beginners](https://github.com/microsoft/mcp-for-beginners)（六语言）
@@ -70,7 +70,7 @@
 ## 当前状态与路线图
 
 - [x] 课程大纲设计（CURRICULUM.md）
-- [x] 竞品调研与借鉴分析（research/agent-tutorials/landscape.md）
+- [x] 竞品调研与借鉴分析（research/agent-tutorials/landscape.md，调研档案未随仓发布）
 - [x] 逐仓教学解剖（research/agent-tutorials/profiles/ ×8 + report.md 综合报告）
 - [x] Unit 0 内容与练习（L0.1 工具链 + 明线种子）
 - [x] Unit 1 内容与练习（九课 + 里程碑：语言核心·Java 对照，三态验证全过）
@@ -83,7 +83,7 @@
 ## 工程说明
 
 - 本教程的工作规范（中心思想 / 设计理念 / 硬性纪律 / 写课流程）见 [AGENTS.md](./AGENTS.md)。
-- 本教程当前生活在个人实验室仓库（[lab](../)）的 `py-night-school/` 目录，内容成型后拆独立仓库开源（保持目录自包含就是为了随时可拆）。
-- 调研档案（竞品扫描、逐仓解剖）在 lab 仓 [research/agent-tutorials/](../research/agent-tutorials/)，是教程的**创作输入而非发布物**——拆仓开源时教程正文自包含、不依赖 lab 内部路径（原则见其 landscape.md §5）。
+- 本仓库即独立开源仓库（2026-09 自个人实验室仓库 [lab](https://github.com/yq3/lab) 拆出）——「教程目录自包含、随时可拆」的约定由此兑现。
+- 调研档案（竞品扫描、逐仓解剖）保留在 lab 仓 [research/agent-tutorials/](https://github.com/yq3/lab/tree/main/research/agent-tutorials/)，是教程的**创作输入而非发布物**——教程正文自包含、不依赖 lab 内部路径（原则见 landscape.md §5）。
 - 教程中「源码路标」引用的框架仓库按 MIT/Apache 等各自协议归属原作者，我们只做导读链接。
-- License：待定（拆仓时确定，倾向 MIT）。
+- License：[MIT](./LICENSE)。

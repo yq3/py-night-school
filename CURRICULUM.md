@@ -1,7 +1,7 @@
 # py-night-school（Python 夜校）课程大纲
 
 > 本文是教程的骨架：设计原则 → 课时模板 → 练习机制 → 30 课时明细 → 节奏建议。
-> 设计前的竞品调研见 [research/agent-tutorials/](../research/agent-tutorials/)：市场扫描（landscape.md）+ 课时内容级解剖综合（report.md）+ 逐仓档案（profiles/ ×8）。
+> 设计前的竞品调研见 lab 仓 [research/agent-tutorials/](https://github.com/yq3/lab/tree/main/research/agent-tutorials/)：市场扫描（landscape.md）+ 课时内容级解剖综合（report.md）+ 逐仓档案（profiles/ ×8）。
 > 夜校话术对照：单元 = 学段，课时 = 晚课讲次，Unit 5 = 结业考；结构性术语保持工程清晰，不硬套主题。
 
 ## 1. 设计原则（承袭个人学习计划，经用户确认）
@@ -70,7 +70,7 @@
 
 - 六段式借鉴 microsoft/ai-agents-for-beginners 的「文 + 码 + 延伸链接」三件套，在其上增加 Java 对照与陷阱两段（我们的差异化所在）。
 - 源码路标统一指向 GitHub 真实路径并**锚定 commit**（如 `langchain-ai/langgraph@e539ac122#libs/langgraph/langgraph/graph/state.py`），不粘贴大段源码。
-- 陷阱的「命名化失败模式」结构与「单变量编辑约束 / hints 渐进披露」依据 [调研报告](../research/agent-tutorials/report.md) §3.1/§3.4（八仓解剖结论）。
+- 陷阱的「命名化失败模式」结构与「单变量编辑约束 / hints 渐进披露」依据 lab 仓 [调研报告](https://github.com/yq3/lab/blob/main/research/agent-tutorials/report.md) §3.1/§3.4（八仓解剖结论）。
 
 ## 3. 练习机制（rustlings 模式）
 
@@ -201,7 +201,7 @@
 ```
 py-night-school/
 ├── README.md            # 入口：定位/受众/使用方式
-├── CURRICULUM.md        # 本文件（调研依据见 ../research/agent-tutorials/）
+├── CURRICULUM.md        # 本文件（调研依据见 lab 仓 research/agent-tutorials/，未随仓发布）
 ├── data/                # 共享 mock 素材（报销/预算/发票），金融素材复用 openai-cookbook examples/data/（NotRealCorp 虚构财报等）
 ├── scripts/
 │   ├── check_lesson.py  # 课时模板机器校验（章节齐全/练习有 TODO/pytest 存在/源码路标带 commit）
@@ -219,7 +219,7 @@ py-night-school/
         └── milestone/           # 单元里程碑项目
 ```
 
-工程纪律（依据 [调研报告](../research/agent-tutorials/report.md) §3.5/§3.6，全部是竞品的系统性短板，做对了就是卖点）：
+工程纪律（依据 lab 仓 [调研报告](https://github.com/yq3/lab/blob/main/research/agent-tutorials/report.md) §3.5/§3.6，全部是竞品的系统性短板，做对了就是卖点）：
 
 - 每课是独立 uv 项目并提交 `uv.lock`——竞品反例：MS 钉版与 `%pip install -U` 自相矛盾、GenAI_Agents 依赖 pin 分裂、Anthropic 同课三份手工拷贝漂移。
 - 讲义图片本地化存储，不外链 CDN（langchain-academy 反例）；仓库克隆即完整可学，教学主体不外置（HF 全外置 Colab 反例）。

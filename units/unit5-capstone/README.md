@@ -1,7 +1,7 @@
 # Unit 5 毕业设计：财务 agent
 
 > 把研究报告的推荐架构做成 Python PoC——用最低成本验证模式，再翻译回 Java。技术栈：langgraph + FastAPI + SQLite + 任一 OpenAI 兼容模型。
-> 蓝本：lab 仓 [research/agent-oss/report.md](../../../research/agent-oss/report.md) §4（18 仓解剖出的推荐架构；讲义里以模式编号指代其中的模式，速查表见下节——不必去读研究报告）。
+> 蓝本：lab 仓 [research/agent-oss/report.md](https://github.com/yq3/lab/blob/main/research/agent-oss/report.md) §4（18 仓解剖出的推荐架构；讲义里以模式编号指代其中的模式，速查表见下节——不必去读研究报告）。
 
 ## A 模式速查表（讲义里的编号都在这）
 
