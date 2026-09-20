@@ -2,6 +2,8 @@
 
 > 写给 Java 工程师的 Python Agent 开发晚课：**以 agent 开发为场景学 Python，以 Java 心智模型为桥**——一个学期（标准 16 周）从语言核心学到金融合规毕业设计。
 
+**在线阅读**：<https://yq3.github.io/py-night-school/>（全部讲义同源可读版，push 后自动构建发布；练习与验收仍请克隆本仓库）
+
 ## 为什么需要这个教程
 
 2026 年的 agent 开发生态，Python 侧最火热，但现有教程对 Java 工程师都不友好：
@@ -50,6 +52,7 @@
 
 ## 入学指南
 
+- **在线阅读**：全部讲义可在线通读 <https://yq3.github.io/py-night-school/>（与 `units/` 内容同源，push 后自动构建发布）；练习与验收仍需克隆仓库本地跑（克隆即学）。
 - **环境**：只需安装 [uv](https://docs.astral.sh/uv/)（教程第一课带你配好，macOS / Windows / Linux 均可，平台差异处会对照标注），每课是独立可运行的 uv 项目。
 - **模型端点中立**：任何 OpenAI 兼容端点均可（GLM / DeepSeek / Qwen / OpenAI / 本地 vLLM），不绑定任何云厂商——这是与微软课程（Azure/Foundry）的显著差异。
 - **练习即测试**：每课 `exercises/` 提供带 TODO 的练习文件，`uv run pytest` 全绿即完成本课（rustlings 式验收，Java 同学可以理解为 Exercism 模式）。
@@ -78,11 +81,12 @@
 - [x] Unit 3 内容与练习（八课 + 里程碑：框架四重奏——openai-agents / langgraph×3 / deepagents / adk 同题 demo 五课对版共用验收脚本，dify 平台半日游，决策表收口；全程零 key 离线可验收，三态验证全过）
 - [x] Unit 4 产品实战课（三课 + 里程碑：ai-hedge-fund 层级投票 / TradingAgents 辩论-裁决 / Vibe-Trading 治理合规——风控光谱递进、报销域明线、机制抽取件零 key；里程碑为产品改造工作台：verify 三课机制件跨课重验 + 三份改造说明收口，三态验证全过）
 - [x] Unit 5 毕业设计与参考实现（四课 + 里程碑：财务 agent PoC——L5.1 静态图+计划驱动 / L5.2 审批外化 REST+SSE / L5.3 事件溯源与审计 / L5.4 fail-closed 执行门 + JAVA-MAPPING.md；推荐架构 §4 落地，四课对版生长、里程碑三链路（审批暂停恢复/拒绝回环/门拒绝）集成测试全绿，全程零 key 离线可验收，三态验证全过）
-- [ ] （远期）英文版 / 社区贡献指南（在线阅读站已提前落地为原型：[handbook/](./handbook/)，Unit 0 放量、构建管线全量可出）
+- [ ] （远期）英文版 / 社区贡献指南（在线阅读站已提前落地并公网上线：<https://yq3.github.io/py-night-school/>，源见 [handbook/](./handbook/)——push main 自动构建发布，后续内容增量即自动同步上线）
 
 ## 工程说明
 
 - 本教程的工作规范（中心思想 / 设计理念 / 硬性纪律 / 写课流程）见 [AGENTS.md](./AGENTS.md)。
+- 在线阅读站 <https://yq3.github.io/py-night-school/>：[handbook/](./handbook/) 把 `units/` 的课程 MD 渲染为 mkdocs-material 纯静态站（HTML 是构建产物不手写，MD 仍是唯一事实源），push main 后 GitHub Actions 自动重建发布（Pages workflow 模式，dist 不入库、不建 gh-pages 分支）。
 - 本仓库即独立开源仓库（2026-09 自个人实验室仓库 [lab](https://github.com/yq3/lab) 拆出）——「教程目录自包含、随时可拆」的约定由此兑现。
 - 调研档案（竞品扫描、逐仓解剖）保留在 lab 仓 [research/agent-tutorials/](https://github.com/yq3/lab/tree/main/research/agent-tutorials/)，是教程的**创作输入而非发布物**——教程正文自包含、不依赖 lab 内部路径（原则见 landscape.md §5）。
 - 教程中「源码路标」引用的框架仓库按 MIT/Apache 等各自协议归属原作者，我们只做导读链接。
