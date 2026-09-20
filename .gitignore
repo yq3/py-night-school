@@ -5,3 +5,5 @@ __pycache__/
 .ruff_cache/
 # 模型端点配置（只有 .env.example 进仓）
 .env
+# ZCode 会话工作状态（计划书等本地产物；若日后保存需随仓的工作流，用 !.zcode/workflows/ 反选）
+.zcode/
