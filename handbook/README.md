@@ -27,6 +27,17 @@ uv run build.py
 uv run python -m http.server 8347 -d dist
 ```
 
+## 线上部署（GitHub Pages）
+
+站点发布在 <https://yq3.github.io/py-night-school/>。push 到 main（`units/**`、
+`CURRICULUM.md`、`handbook/**` 或 workflow 自身有改动时）由
+[handbook-pages workflow](../.github/workflows/handbook-pages.yml) 自动
+`uv sync --frozen && uv run build.py`，把 `dist/` 作为 artifact 直接发布——
+**不建 gh-pages 分支，产物始终不入库**。`build.py` 生成 mkdocs.yml 时写入
+`site_url`（canonical / sitemap / 404 页路径由它派生），默认生产地址，
+`HANDBOOK_SITE_URL` 环境变量可覆盖（换自定义域名时 CI 注入即可，不改码）；
+依赖版本由随仓提交的 `uv.lock` 钉死，material 出新版不会突袭线上构建。
+
 ## 架构决策（变更前先读）
 
 1. **MD 单一事实源，HTML 是构建产物**。不手写 HTML、不双份维护；`check_lesson.py`
@@ -58,6 +69,10 @@ uv run python -m http.server 8347 -d dist
    - `.md-typeset a` 等元素选择器特异性压过单类名，自定组件要写成 `.md-typeset a.ns-btn` 形态；
    - `generator: false` 是 `theme:` 下的键，放顶层会报 Unrecognised configuration；
    - 中文 CJK 长句搜索召回弱（lunr 默认空白分词），留待换索引方案。
+7. **公网部署 = Actions 构建发布，产物永不入库**（2026-09-20 上线 GitHub Pages）：
+   Pages 走 workflow 模式（发布构建 artifact，不建 gh-pages 分支）；`site_url` 由
+   build.py 注入（`HANDBOOK_SITE_URL` 可覆盖）；`uv.lock` 随仓提交钉死 CI 依赖版本
+   ——拆仓已成，与课程纪律「uv.lock 必须提交」就此统一口径。
 
 ## 目录
 
@@ -70,7 +85,8 @@ handbook/
 ├── PRODUCT.md                   # 产品真相（impeccable init 产物）
 ├── DESIGN.md                    # 设计系统记录（impeccable documenter 产物）
 ├── .stage/                      # 暂存副本（生成物，gitignore）
-├── dist/                        # 站点产物（生成物，gitignore）
+├── dist/                        # 站点产物（生成物，gitignore；CI 直接发布，不入库）
+├── uv.lock                      # 依赖锁（随仓提交，钉死 CI 构建版本）
 └── mkdocs.yml                   # 由 build.py 生成（gitignore）
 ```
 
@@ -292,6 +308,6 @@ handbook/
   localStorage 记忆）。
 - 讲义内的 Tab / 折叠渐进披露组件目前只在落地页演示；课程 MD 逐课采用需要先在
   宪法 §3/§4 补约定（对照块语法、陷阱折叠语法），避免各课各写一套。
-- `uv.lock` 暂列 gitignore：这是构建工具链锁文件，是否随仓提交待拆仓时与课程
-  纪律（课时项目 uv.lock 必须提交）统一口径后决定。
+- ~~`uv.lock` 暂列 gitignore：是否随仓提交待拆仓时与课程纪律统一口径~~
+  → 2026-09-20 随公网部署落定：随仓提交，钉死 CI 构建版本（架构决策 #7）。
 - `:has()` 选择器（落地页全幅布局）在旧浏览器降级为普通窄栏布局，可接受。

@@ -1,0 +1,52 @@
+# handbook 在线阅读站部署：push 到 main（课程 / 构建相关路径）→ 自动重建发布。
+# Pages 走 workflow 模式（Settings → Pages → Source: GitHub Actions）——直接发布
+# 构建 artifact，不建 gh-pages 分支，dist 始终不入库（HTML 是纯构建产物的纪律不变）。
+# 依赖版本由随仓提交的 handbook/uv.lock 钉死（uv sync --frozen，material 新版不会突袭 CI）。
+name: handbook-pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - units/**
+      - CURRICULUM.md
+      - handbook/**
+      - .github/workflows/handbook-pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          cache-dependency-glob: handbook/uv.lock
+      - run: uv sync --frozen
+        working-directory: handbook
+      - run: uv run build.py
+        working-directory: handbook
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: handbook/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

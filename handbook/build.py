@@ -19,6 +19,9 @@ units/ 下的课程 Markdown 是唯一事实源（check_lesson.py 仍以它为�
     uv run build.py                # 构建全部单元到 dist/
     uv run build.py unit0-toolchain  # 只构建指定单元（原型阶段）
     uv run build.py --serve        # 构建并本地预览 http://127.0.0.1:8000
+
+site_url 默认生产地址（GitHub Pages，派生 canonical / sitemap / 404 页路径），
+HANDBOOK_SITE_URL 环境变量可覆盖（换自定义域名时 CI 注入即可，不改码）。
 """
 
 from __future__ import annotations
@@ -37,6 +40,8 @@ ROOT = HANDBOOK.parent
 STAGE_DOCS = HANDBOOK / ".stage" / "docs"
 DIST = HANDBOOK / "dist"
 MKDOCS_YML = HANDBOOK / "mkdocs.yml"
+# 生产站点地址：无它则产物缺 canonical、sitemap 为空、404 页是根绝对路径（子路径部署下资源失效）
+SITE_URL = os.environ.get("HANDBOOK_SITE_URL", "https://yq3.github.io/py-night-school/")
 
 FINAL_HEADING_RE = re.compile(r"^## 离毕业又近[了的]?一块[ \t]*$", re.M)
 # 方向契约（impeccable：随构建产物留存，可审计——dist 任一页 grep「DESIGN CONTRACT」）
@@ -231,6 +236,7 @@ def write_mkdocs_yml(nav: str) -> None:
         f"""# 由 build.py 生成——不要手改；改源文件后重跑构建。
 site_name: Python Night School
 site_description: 写给 Java 工程师的 Python Agent 开发晚课
+site_url: {SITE_URL}
 copyright: Python Night School · Python 夜校 · 以 Java 心智模型为桥
 docs_dir: .stage/docs
 site_dir: dist
