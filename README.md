@@ -7,7 +7,7 @@
 
 > 写给 Java 工程师的 Python Agent 开发晚课：**以 agent 开发为场景学 Python，以 Java 心智模型为桥**。标准 16 周、30 讲，最终完成一个金融合规 agent 毕业设计。
 
-**在线阅读**：[课程站](https://yq3.github.io/py-night-school/)；练习和验收请克隆本仓库。
+**在线阅读**：[点击此处阅览](https://yq3.github.io/py-night-school/)；练习和验收请克隆本仓库。
 
 ## 快速开始：零 key 跑通一个 Agent
 
@@ -22,7 +22,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ```powershell
 # Windows PowerShell
-irm https://astral.sh/uv/install.ps1 | iex
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
 重新打开终端并确认：
