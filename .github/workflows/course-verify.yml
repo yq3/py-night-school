@@ -1,0 +1,47 @@
+# 课程质量门禁（2026-09-22 落地，评审先例：此前 Actions 只构建阅读站，课程练习没有公开验证信号）。
+# 覆盖策略按评审建议「先关键路径、再逐步扩大」：
+#   1) 结构校验全量（纯 Python，快）；
+#   2) 三态验证抽关键路径——L0.1（第一课 + lint 设计内红先例）、L2.3（离线 ReAct demo /
+#      Quickstart 门面）、unit5 milestone（收官件 + 里程碑布局 + XFAIL 完成度信号）。
+# 全量三态（30 课时 + 5 里程碑）仍在本地跑：python3 scripts/three_state_check.py
+name: course-verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: course-verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  structure:
+    name: 结构校验（六段式全量）
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: check_lesson 全量
+        run: python scripts/check_lesson.py
+
+  three-state:
+    name: 三态验证（${{ matrix.dir }}）
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        dir:
+          - units/unit0-toolchain/L0.1-uv-toolchain
+          - units/unit2-mini-agent/L2.3-react-loop
+          - units/unit5-capstone/milestone
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: three_state_check
+        run: python3 scripts/three_state_check.py ${{ matrix.dir }}

@@ -10,7 +10,9 @@
 1. **三条主链路测试全绿**：`tests/test_graduation.py` 的四张链路测试（③有两个变体）——
    最关键的三处取证断言是你填的（`graduation_checks.py` 的三个 TODO）；
 2. **JAVA-MAPPING.md 定稿**：4 行 `TODO(毕业)` 占位全部补全（对照本地克隆核实——诚实
-   纪律：克隆里没有的写「需自建」），`tests/test_mapping_meta.py` 结构把关全绿；
+   纪律：克隆里没有的写「需自建」）。`tests/test_mapping_meta.py` 把两件事分开报告：
+   **结构把关**全绿只证明模板与参考答案完整；**占位是否清零**看文末的 XFAIL/XPASS
+   信号测试（XFAIL=还没填完，XPASS=填完了——它是诚实信号，不拦截全绿）；
 3. **三命令全绿**（本目录下，uv run 跨平台）：
 
 ```bash

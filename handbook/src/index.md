@@ -10,9 +10,32 @@ hide:
 <div class="ns-cover">
 <h1 class="ns-title">Python Night School</h1>
 <p class="ns-sub">Python 夜校——写给 Java 工程师的 Python Agent 开发晚课：以 agent 开发为场景学 Python，以 Java 心智模型为桥，一个学期从语言核心学到金融合规毕业设计。</p>
-<p class="ns-meta">6 学段 · 30 讲 · 练习即测试 · 金融合规毕业设计</p>
+<p class="ns-meta">6 学段 · 30 讲 · 练习即测试 · 零 key 可验收 · 金融合规毕业设计</p>
 <p class="ns-cta"><a class="ns-btn ns-btn--primary" href="unit0/">从 Unit 0 开始</a><a class="ns-btn" href="curriculum/">先看课表</a><a class="ns-btn" href="https://github.com/yq3/py-night-school">获取仓库</a></p>
 </div>
+
+## 先看 Agent 怎么跑（五分钟，零 key）
+
+不用先配模型 API key——仓库的 L2.3 离线 demo 用剧本模型跑完整的 ReAct 工具循环：**查报销单 → 调用预审工具 → 带原因拒绝**。下面是实测轨迹（克隆仓库后 `uv run python code/demo_agent.py` 即可复现，主线全程无需 key）：
+
+```text
+== ReAct agent 离线跑 ==
+注册表: ['get_claim', 'preapprove']
+user: 请审查报销单 CLM-2026-0003。
+
+== 消息轨迹（7 条，消耗 3 轮） ==
+     system: 你是财务预审助手。先用 get_claim 查单据明细，再用 preapprove 预审，最
+       user: 请审查报销单 CLM-2026-0003。
+  assistant: [选了工具: get_claim]
+       tool: {"id": "CLM-2026-0003", "submitter": "赵工", "pu  (id=call_001)
+  assistant: [选了工具: preapprove]
+       tool: REJECT:INVALID_AMOUNT  (id=call_002)
+  assistant: REJECT:INVALID_AMOUNT（报销单含负数金额明细，属脏数据）。
+
+最终回答: REJECT:INVALID_AMOUNT（报销单含负数金额明细，属脏数据）。
+```
+
+这是 Unit 2 手写 mini-agent 的对照原件——之后每个框架课都回来对照「这层抽象替我付掉了什么」。想自己跑一遍或看最终毕业产物，入口见[仓库 README 的「先跑为敬」](https://github.com/yq3/py-night-school#先跑为敬五分钟零-key-跑通一个-agent)。
 
 ## 这门课的六个不一样
 
@@ -23,11 +46,11 @@ hide:
 </div>
 <div class="ns-feat">
 <h4>练习即测试</h4>
-<p>每课练习是带 TODO 的代码，<code>uv run pytest</code> 全绿即过关。八个头部教程解剖的结论：练习验收是全行业空白——这是我们的核心差异。</p>
+<p>每课练习是带 TODO 的代码，<code>pytest</code> / <code>ruff</code> / <code>pyright</code> 三命令全绿即过关。我们解剖的八个头部教程里，没有一个配套练习自动验收——这是我们的核心差异。</p>
 </div>
 <div class="ns-feat">
 <h4>对照组教学</h4>
-<p>Unit 2 先手写 ~300 行 mini-agent，之后每个框架课都回来对照「这层抽象替我付掉了什么」。</p>
+<p>Unit 2 先手写 ~250 行 mini-agent，之后每个框架课都回来对照「这层抽象替我付掉了什么」。</p>
 </div>
 <div class="ns-feat">
 <h4>源码路标</h4>
@@ -39,9 +62,27 @@ hide:
 </div>
 <div class="ns-feat">
 <h4>夜校纪律</h4>
-<p>中文原创、模型端点中立、每课独立 uv 项目锁定依赖、克隆即学——竞品的系统性短板在这里默认不发生。</p>
+<p>中文原创、模型端点中立、每课独立 uv 项目锁定依赖、克隆即学——竞品实测暴露的系统性短板（版本漂移、外链失效、绑定云厂）逐项设防。</p>
 </div>
 </div>
+
+## 练习在哪里
+
+阅读站只负责「读」。这门课真正的主战场在仓库源码里——练习、提示、验收、参考答案都是以文件形态躺在课时目录中的机制，网页只能展示、带不走：
+
+- **练习文件**：每课 `exercises/` 是带 TODO 的骨架，你来填空；
+- **hints 三级渐进**：卡住时逐级展开提示，第 3 级才接近答案——纸面平铺会泄底，所以必须进文件；
+- **自动验收**：每课是独立 uv 项目，`uv sync` 后 `pytest` / `ruff` / `pyright` 三命令全绿即本课毕业，不用等人对答案；
+- **参考答案分离**：`solution/` 目录供对答案与复盘，验收测试文件头部注明不要改。
+
+```bash
+git clone https://github.com/yq3/py-night-school.git
+cd py-night-school/units/unit0-toolchain/L0.1-uv-toolchain
+uv sync
+uv run pytest
+```
+
+克隆后跑通 L0.1 的验收，就算正式入学——之后的每一课都是这套节奏。
 
 ## 讲义在这里的读法
 
@@ -93,22 +134,4 @@ hide:
 <p><code>preapprove()</code> 就是毕业设计「fail-closed 执行门」里<strong>限额检查</strong>的雏形（纯函数、整数分、可参数化测试）。到 Unit 5 你会把它升级成检查链——今晚你已经写下了最后一环的种子。</p>
 </div>
 
-## 练习在哪里
-
-阅读站只负责「读」。这门课真正的主战场在仓库源码里——练习、提示、验收、参考答案都是以文件形态躺在课时目录中的机制，网页只能展示、带不走：
-
-- **练习文件**：每课 `exercises/` 是带 TODO 的骨架，你来填空；
-- **hints 三级渐进**：卡住时逐级展开提示，第 3 级才接近答案——纸面平铺会泄底，所以必须进文件；
-- **自动验收**：每课是独立 uv 项目，`uv sync` 后 `uv run pytest` 全绿即本课毕业，不用等人对答案；
-- **参考答案分离**：`solution/` 目录供对答案与复盘，验收测试文件头部注明不要改。
-
-```bash
-git clone https://github.com/yq3/py-night-school.git
-cd py-night-school/units/unit0-toolchain/L0.1-uv-toolchain
-uv sync
-uv run pytest
-```
-
-克隆后跑通 L0.1 的验收，就算正式入学——之后的每一课都是这套节奏。
-
-> 全部 6 学段 44 页已上线；课程内容以仓库 `units/` 的 Markdown 为唯一事实源，改源文件后重跑构建即可。右上角的月亮 / 太阳可切换夜间 / 日间模式，GitHub 图标直达仓库。
+> 6 学段 30 讲已全部上线；本站 44 个页面 = 30 讲 + 6 单元导读 + 5 里程碑 + 首页 / 课表 / 404 三个站点页。课程内容以仓库 `units/` 的 Markdown 为唯一事实源，改源文件后重跑构建即可。右上角的月亮 / 太阳可切换夜间 / 日间模式，GitHub 图标直达仓库。

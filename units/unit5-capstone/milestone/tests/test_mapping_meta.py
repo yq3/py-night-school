@@ -7,12 +7,17 @@ r"""毕业测试②：JAVA-MAPPING.md 定稿的结构把关（meta-test，L0.1 e
 - TODO(毕业) 未填行（发货/模板态）：以 solution/JAVA-MAPPING.md 完成版为准——有完成版
   可对照收口即过（先例 Unit 3 milestone 笔记）；学员填完后（根文档零占位）按无残留口径
   直接验收——占位清零是毕业判据，不是装饰。
+- 结构与完成度分开报告（2026-09-21 评审先例）：以上全是「教材交付检查」——全绿只证明
+  模板与参考答案完整，不证明学员已填完；「填没填完」由文末 XFAIL 信号测试单独汇报，
+  两件事互不冒充。
 """
 
 from __future__ import annotations
 
 import re
 from pathlib import Path
+
+import pytest
 
 MILESTONE_DIR = Path(__file__).resolve().parents[1]
 DOC = MILESTONE_DIR / "JAVA-MAPPING.md"
@@ -117,3 +122,21 @@ def test_unfilled_rows_match_todo_marks_in_text() -> None:
     text = DOC.read_text(encoding="utf-8")
     unfilled = _unfilled(_main_rows(text))
     assert len(unfilled) == text.count(TODO_MARK)
+
+
+@pytest.mark.xfail(
+    reason="JAVA-MAPPING.md 的 TODO(毕业) 占位未清零——这是内容完成度的诚实信号，不是结构缺陷；"
+    "补全后本测试转 XPASS，即毕业判据 2 的完成标记",
+    strict=False,
+)
+def test_graduation_mapping_fully_filled() -> None:
+    """内容完成信号（与上面的结构把关分开报告——2026-09-21 评审先例：
+    结构全绿证明的是教材与参考答案完整，「学员已填完」要另眼可见）。
+
+    发货态 XFAIL（占位在，如实亮黄灯）；学员补全后 XPASS（占位清零，绿灯自证）；
+    three_state_check 毕业态会用 solution/JAVA-MAPPING.md 覆盖根文档，同样 XPASS。
+    三种状态都不拦截全绿——本测试只负责把「填没填完」单独汇报出来。
+    """
+    text = DOC.read_text(encoding="utf-8")
+    unfilled = _unfilled(_main_rows(text))
+    assert not unfilled, f"占位未清零：第 {unfilled} 行的 Java 对应物列仍是 {TODO_MARK}"

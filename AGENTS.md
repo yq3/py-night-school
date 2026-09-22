@@ -8,7 +8,7 @@
 - **一句话**：写给 Java 工程师的 Python Agent 开发晚课——以 agent 开发为场景学 Python，以 Java 心智模型为桥。
 - **双目的**：学员既获得 Python 工程能力，也获得可带回 Java 栈的迁移地图（毕业设计产出 JAVA-MAPPING.md）。
 - **受众红线**：只服务「Java 熟、Python 略懂」人群。Python 已熟练者、零基础者、想学 LLM 原理者——在 README「招生对象」明确指路别处，不为他们加课。
-- **空档定位**（不摇摆）：市场上无人占据的交集 = Java 桥 × 练习自动验收 × 源码深度 × 金融毕业设计 × 端点中立。证据：lab 仓 research/agent-tutorials/report.md（八仓解剖：练习验收是全行业空白）。
+- **空档定位**（不摇摆）：市场上无人占据的交集 = Java 桥 × 练习自动验收 × 源码深度 × 金融毕业设计 × 端点中立。证据：lab 仓 research/agent-tutorials/report.md（八仓解剖：没有一个配套练习自动验收）。
 
 ## 2. 课程设计理念（六特色，README 为准，此处为索引）
 
@@ -66,7 +66,7 @@
 
 **三态验证法**（涉及代码的改动必须实测）：
 
-1. **发货态**「精确红」：只有设计内的失败（TODO 未填的 failed、meta 未过的 failed、ex3 类设计内 ruff 违规），讲义示例部分必须绿；
+1. **发货态**「精确红」：只有设计内的失败——TODO 未填的 failed、meta 未过的 failed、学员作答区的 ruff 违规（ex3 类）与 pyright error（TODO 未填的天然形态，L1.2/L1.3 先例）；三条命令同口径：全部落在学员作答区才算，讲义示例部分必须绿；
 2. **毕业态**全绿：solution 覆盖进 /tmp 副本后，三命令 + `ruff format --check` 全部通过；
 3. `scripts/check_lesson.py` PASS。
 
