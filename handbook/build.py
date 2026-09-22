@@ -238,7 +238,7 @@ site_name: Python Night School
 site_description: 写给 Java 工程师的 Python Agent 开发晚课
 site_url: {SITE_URL}
 repo_url: https://github.com/yq3/py-night-school  # 页头 GitHub 图标按钮（Material 原生 repo 链接，header override 自带渲染分支）
-copyright: Python Night School · Python 夜校 · 以 Java 心智模型为桥
+copyright: Python Night School · Python 夜校
 docs_dir: .stage/docs
 site_dir: dist
 
@@ -271,6 +271,7 @@ theme:
     # 单元开合跨页记忆 + 首帧前恢复见 overrides/partials/nav.html 的内联脚本
     - navigation.top
     - navigation.tracking
+    - navigation.footer      # 每页底部「上一页 / 下一页」翻页链接（样式见 night.css 页脚段）
     - toc.follow
     - content.code.copy
     - search.highlight
@@ -340,14 +341,14 @@ def main() -> int:
         short = re.sub(r"^Unit \d+\s*", "", unit_title).split("：")[0]
         num = unit_dir.name.split("-", 1)[0].removeprefix("unit")
         tab = f"Unit {num} · {short}"
-        pages: list[tuple[str, str]] = [("单元导读", f"{ukey}/index.md")]
+        pages: list[tuple[str, str]] = [(f"Unit {num} 单元导读", f"{ukey}/index.md")]
         for lesson in sorted(p for p in unit_dir.iterdir() if p.is_dir() and p.name.startswith("L")):
             title = stage_page(lesson / "README.md", STAGE_DOCS / ukey / lesson.name / "index.md")
             pages.append((title, f"{ukey}/{lesson.name}/index.md"))
         milestone = unit_dir / "milestone"
         if milestone.is_dir():
             title = stage_page(milestone / "README.md", STAGE_DOCS / ukey / "milestone" / "index.md")
-            pages.append((f"里程碑 · {short}", f"{ukey}/milestone/index.md"))
+            pages.append((f"Unit {num} 里程碑 · {short}", f"{ukey}/milestone/index.md"))
         staged[ukey] = {"tab": tab, "pages": pages}
 
     write_mkdocs_yml(build_nav(staged))

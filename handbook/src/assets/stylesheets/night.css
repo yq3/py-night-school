@@ -715,16 +715,76 @@ html {
 
 .md-footer {
   background: var(--ns-bg);
-  border-top: 1px solid var(--ns-line);
 }
 .md-footer-meta {
   background: transparent;
+  border-top: 1px solid var(--ns-line);  /* 页脚横线只包版权行——翻页按钮属正文栏，在横线上方 */
 }
 .md-copyright {
+  color: var(--ns-ink-3);
+  /* Material ≥45em 把版权行收窄为 width:auto（flex 贴左）——占满整行才能页心居中 */
+  width: 100%;
+  text-align: center;
+}
+/* 版权正文在 .md-copyright__highlight 里：Material 直配 70% 白（默认黑底页脚用），
+   继承色压不过直选规则——素纸白底上白字不可见（深色底碰巧显形），须同形后发压回墨灰 */
+.md-copyright__highlight {
   color: var(--ns-ink-3);
 }
 .md-copyright a {
   color: var(--ns-ink-2);
+}
+
+/* 翻页按钮（navigation.footer 特性）：与正文栏同宽（40rem 居中、同 1.2rem 内边距），
+   形态与扉页 .ns-btn 同语言——上一页贴左、下一页贴右。Material 默认按黑底页脚配
+   白字（素纸白底不可见）、悬停 opacity 变暗（宪法零透明度戏法）——同形后发全部压回本站令牌 */
+.md-footer__inner {
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.2rem 1.7rem;
+}
+.md-footer__link {
+  align-items: center;
+  margin: 0 0 1.2rem;
+  padding: 0.5em 1.05em;
+  border: 1px solid var(--ns-line);
+  border-radius: 8px;
+  color: var(--ns-ink);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.md-footer__link:hover,
+.md-footer__link:focus {
+  color: var(--ns-python);
+  border-color: var(--ns-python);
+  opacity: 1;
+}
+.md-footer__button {
+  margin: 0.1rem;
+  padding: 0.3rem;
+  color: var(--ns-ink-2);
+}
+.md-footer__link:hover .md-footer__button,
+.md-footer__link:focus .md-footer__button {
+  color: var(--ns-python);
+}
+.md-footer__title {
+  margin: 0;
+  padding: 0 0.25rem;
+  max-width: 100%;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.md-footer__direction {
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: var(--ns-ink-3);
+  opacity: 1;
+}
+/* 扉页（封面页）不显示翻页按钮：首页是导航首项、只有一枚「下一页」，
+   封面自有 CTA 入口，孤 button 无对照价值（.ns-cover 为扉页独有标记） */
+body:has(.ns-cover) .md-footer__inner {
+  display: none;
 }
 
 /* ==========================================================================
@@ -845,6 +905,19 @@ html {
 @media screen and (max-width: 59.9375em) {
   .md-typeset {
     font-size: 0.84rem;
+  }
+  /* 窄屏翻页按钮纵向堆叠全宽：上一页贴左、下一页镜像贴右 */
+  .md-footer__inner {
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-bottom: 1.2rem;
+  }
+  .md-footer__link {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .md-footer__link--next {
+    justify-content: flex-end;
   }
   .md-typeset h1 {
     font-size: 1.5rem;
