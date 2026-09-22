@@ -83,6 +83,8 @@ $env:UV_DEFAULT_INDEX = "https://pypi.tuna.tsinghua.edu.cn/simple"      # 当前
 setx UV_DEFAULT_INDEX "https://pypi.tuna.tsinghua.edu.cn/simple"        # 持久化（新终端生效）
 ```
 
+镜像也不稳的话还有一条官方兜底路：从 [Python 官网下载 3.12.10 安装包](https://www.python.org/downloads/release/python-31210/)（macOS 是 `.pkg`，Windows 是安装器——记得勾选 **Add python.org Python to PATH**）。装好后无需任何额外配置：uv 会自动发现系统里已装的 Python，本项目 `.python-version` 钉的是 `3.12`，官网这份 3.12.10 满足要求，`uv sync` / `uv run` 直接用它，不再触发下载。
+
 Node 也提前说清：pyright 需要 Node 运行时，本项目已把 `nodejs-wheel-binaries` 钉进 dev 依赖——Node 随 PyPI 安装（走上面的镜像；wheel＝Python 的 jar：PyPI 分发的预编译包格式，这个包就是把 Node 打成了 wheel），不会去 nodejs.org 直连下载；你机器上若已有 Node，pyright 也会直接复用。
 
 ### Step 3 理解本课项目（5 分钟）
