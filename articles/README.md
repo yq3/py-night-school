@@ -18,7 +18,7 @@
 - **去掉文首 blockquote**（「发布渠道建议 / 素材同源」两行是仓内工作备注，不外发）；
 - 文内链接已全部写成绝对 URL（平台编辑器不认相对链接），无需改写；
 - 标题从问题出发，不写「我的教程上线了」（评审明确建议）；
-- 文末引导动作要具体：跑一遍 [五分钟 Quickstart](https://github.com/yq3/py-night-school#先跑为敬五分钟零-key-跑通一个-agent)、指出一处问题（issue）、或提交一份学习记录——不只是求 star。
+- 文末引导动作要具体：跑一遍 [五分钟 Quickstart](https://github.com/yq3/py-night-school#快速开始零-key-跑通一个-agent)、指出一处问题（issue）、或提交一份学习记录——不只是求 star。
 
 ## 诚实纪律（发布前自查）
 

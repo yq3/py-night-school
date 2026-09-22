@@ -94,7 +94,8 @@
 
 | 文档 | 角色 |
 |---|---|
-| [README.md](./README.md) | 对外入口：为什么 / 特色 / 课表 / 入学指南 / 路线图 |
+| [README.md](./README.md) | 对外入口：为什么 / 特色 / 课表 / 入学指南 |
+| [ROADMAP.md](./ROADMAP.md) | 交付状态与后续计划（2026-09-22 自 README 拆出） |
 | [CURRICULUM.md](./CURRICULUM.md) | 30 课时大纲 + 课时模板 + 练习机制 + 布局与纪律 |
 | [DECISIONS.md](./DECISIONS.md) | 演进决策与复盘全档案——宪法先例的完整叙事层 |
 | [reviews/](./reviews/) | 外部评审原始档案 |

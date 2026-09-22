@@ -104,6 +104,6 @@ class Bad:
 - 类型标注：[L1.2 类型系统与 Protocol](https://yq3.github.io/py-night-school/unit1/L1.2-types-and-protocol/)
 - dataclass / Pydantic：[L1.3 数据建模](https://yq3.github.io/py-night-school/unit1/L1.3-dataclass-pydantic/)
 
-仓库：<https://github.com/yq3/py-night-school>（30 讲 · 练习即测试 · 主线无需模型 key，[五分钟跑通一个 Agent](https://github.com/yq3/py-night-school#先跑为敬五分钟零-key-跑通一个-agent)）。
+仓库：<https://github.com/yq3/py-night-school>（30 讲 · 练习即测试 · 主线无需模型 key，[五分钟跑通一个 Agent](https://github.com/yq3/py-night-school#快速开始零-key-跑通一个-agent)）。
 
 如果这些 Java↔Python 对照和可验收练习对你有帮助，欢迎 Star 收藏——方便下次继续学，也让更多 Java 工程师能看到它。

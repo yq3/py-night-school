@@ -16,26 +16,19 @@ hide:
 
 ## 先看 Agent 怎么跑（五分钟，零 key）
 
-不用先配模型 API key——仓库的 L2.3 离线 demo 用剧本模型跑完整的 ReAct 工具循环：**查报销单 → 调用预审工具 → 带原因拒绝**。下面是实测轨迹（克隆仓库后 `uv run python code/demo_agent.py` 即可复现，主线全程无需 key）：
+不用配置模型 API key，L2.3 的离线 demo 用剧本模型跑完整的 ReAct 工具循环：**查报销单 → 预审 → 带原因拒绝**。克隆仓库后，在该课目录执行 `uv run python code/demo_agent.py` 即可复现（实测输出节选）：
 
 ```text
-== ReAct agent 离线跑 ==
-注册表: ['get_claim', 'preapprove']
-user: 请审查报销单 CLM-2026-0003。
+     user: 请审查报销单 CLM-2026-0003。
+assistant: [选了工具: get_claim]
+     tool: {"id": "CLM-2026-0003", "submitter": "赵工", "pu  (id=call_001)
+assistant: [选了工具: preapprove]
+     tool: REJECT:INVALID_AMOUNT  (id=call_002)
 
-== 消息轨迹（7 条，消耗 3 轮） ==
-     system: 你是财务预审助手。先用 get_claim 查单据明细，再用 preapprove 预审，最
-       user: 请审查报销单 CLM-2026-0003。
-  assistant: [选了工具: get_claim]
-       tool: {"id": "CLM-2026-0003", "submitter": "赵工", "pu  (id=call_001)
-  assistant: [选了工具: preapprove]
-       tool: REJECT:INVALID_AMOUNT  (id=call_002)
-  assistant: REJECT:INVALID_AMOUNT（报销单含负数金额明细，属脏数据）。
-
-最终回答: REJECT:INVALID_AMOUNT（报销单含负数金额明细，属脏数据）。
+ 最终回答: REJECT:INVALID_AMOUNT（报销单含负数金额明细，属脏数据）。
 ```
 
-这是 Unit 2 手写 mini-agent 的对照原件——之后每个框架课都回来对照「这层抽象替我付掉了什么」。想自己跑一遍或看最终毕业产物，入口见[仓库 README 的「先跑为敬」](https://github.com/yq3/py-night-school#先跑为敬五分钟零-key-跑通一个-agent)。
+它也是后续框架课反复对照的手写 mini-agent。
 
 ## 这门课的六个不一样
 
@@ -88,7 +81,7 @@ uv run pytest
 
 课程源文件是仓库里的 Markdown（单一事实源，机器校验的对象）；这个阅读站把它渲染成更适合晚上读的形态。下面三个组件对应教学机制的三个主张，讲义将逐课采用。
 
-**对照即颜色**：Java 物与 Python 物在站内各有固定颜色（橙 / 蓝），对照表的列、代码块的语言顶边同套着色——
+**对照即颜色**：Java 物与 Python 物在站内各有固定颜色（橙 / 蓝），对照表的列、代码块的语言顶边同套着色。
 
 === "Maven · pom.xml"
 
@@ -109,7 +102,7 @@ uv run pytest
     dev = ["pytest>=8", "ruff>=0.8", "pyright>=1.1"]
     ```
 
-**渐进披露**：hints 三级提示在纸面上是平铺的（一眼扫到第 3 级就泄底），在站内逐级折叠——想 5 分钟再点开：
+**渐进披露**：hints 三级提示在站内逐级折叠，按需展开：
 
 ??? note "第 1 级 · 方向"
 
@@ -134,4 +127,4 @@ uv run pytest
 <p><code>preapprove()</code> 就是毕业设计「fail-closed 执行门」里<strong>限额检查</strong>的雏形（纯函数、整数分、可参数化测试）。到 Unit 5 你会把它升级成检查链——今晚你已经写下了最后一环的种子。</p>
 </div>
 
-> 6 学段 30 讲已全部上线；本站 44 个页面 = 30 讲 + 6 单元导读 + 5 里程碑 + 首页 / 课表 / 404 三个站点页。课程内容以仓库 `units/` 的 Markdown 为唯一事实源，改源文件后重跑构建即可。右上角的月亮 / 太阳可切换夜间 / 日间模式，GitHub 图标直达仓库。
+> 6 学段 30 讲已全部上线。课程内容以仓库 `units/` 的 Markdown 为唯一事实源；练习与验收请回到仓库完成。右上角可切换浅色 / 深色主题。

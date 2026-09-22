@@ -84,6 +84,6 @@ mini-agent 之后的八课，把同一道报销单审查交给 openai-agents、l
 
 - 手写 mini-agent（任务书 + 十一路验收）：[在线读](https://yq3.github.io/py-night-school/unit2/milestone/) · [仓库源码](https://github.com/yq3/py-night-school/tree/main/units/unit2-mini-agent/milestone)
 - 对照总结课（决策表生成器 + 跳读指南）：[在线读](https://yq3.github.io/py-night-school/unit3/L3.8-comparison/)
-- 想先跑为敬：[五分钟零 key 跑通 ReAct 循环](https://github.com/yq3/py-night-school#先跑为敬五分钟零-key-跑通一个-agent)
+- 想先跑为敬：[五分钟零 key 跑通 ReAct 循环](https://github.com/yq3/py-night-school#快速开始零-key-跑通一个-agent)
 
 如果这个「先手写、再对照」的学法和可验收练习对你有帮助，欢迎 Star 收藏——方便下次继续学，也让更多 Java 工程师能看到它。

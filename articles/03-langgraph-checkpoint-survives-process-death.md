@@ -77,6 +77,6 @@ events: ['reviewer', 'tools', 'reviewer', 'human_gate', 'reviewer', 'finalize']
 
 - checkpoint 与 interrupt 全课（含分进程实验与练习）：[在线读](https://yq3.github.io/py-night-school/unit3/L3.3-langgraph-checkpoint/) · [仓库源码](https://github.com/yq3/py-night-school/tree/main/units/unit3-frameworks/L3.3-langgraph-checkpoint)
 - 这个机制的毕业设计去向（审批外化 REST + SSE）：[L5.2 在线读](https://yq3.github.io/py-night-school/unit5/L5.2-approval-api/)
-- 想先跑为敬：[五分钟零 key 跑通 ReAct 循环](https://github.com/yq3/py-night-school#先跑为敬五分钟零-key-跑通一个-agent)
+- 想先跑为敬：[五分钟零 key 跑通 ReAct 循环](https://github.com/yq3/py-night-school#快速开始零-key-跑通一个-agent)
 
 如果这篇拆解和可验收练习对你有帮助，欢迎 Star 收藏——方便下次继续学，也让更多 Java 工程师能看到它。

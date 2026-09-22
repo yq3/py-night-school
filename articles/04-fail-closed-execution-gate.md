@@ -70,6 +70,6 @@ policy: 单笔≤200000 分, 日累计≤500000 分, 日次数≤3, 黑名单=['
 
 - 执行门全课（检查链 + 三态裁决 + 结业自查）：[在线读](https://yq3.github.io/py-night-school/unit5/L5.4-execution-gate/) · [仓库源码](https://github.com/yq3/py-night-school/tree/main/units/unit5-capstone/L5.4-execution-gate)
 - 毕业设计里程碑（四层合体 PoC + 集成测试）：[在线读](https://yq3.github.io/py-night-school/unit5/milestone/)
-- 想先跑为敬：[五分钟零 key 跑通 ReAct 循环](https://github.com/yq3/py-night-school#先跑为敬五分钟零-key-跑通一个-agent)
+- 想先跑为敬：[五分钟零 key 跑通 ReAct 循环](https://github.com/yq3/py-night-school#快速开始零-key-跑通一个-agent)
 
 如果这篇拆解和可验收练习对你有帮助，欢迎 Star 收藏——方便下次继续学，也让更多做企业系统的工程师能看到它。
